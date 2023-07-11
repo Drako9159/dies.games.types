@@ -1,0 +1,8 @@
+npm install express bcryptjs cors dotenv jsonwebtoken mongoose -E
+npm install --save-dev @types/express @types/jsonwebtoken @types/dotenv @types/cors  @types/bcryptjs @types/mongoose
+npm install nodemon -D -E
+
+npm install typescript
+npx tsc --init
+npm install ts-node -D -E
+

@@ -5,4 +5,3 @@ npm install nodemon -D -E
 npm install typescript
 npx tsc --init
 npm install ts-node -D -E
-

@@ -9,4 +9,5 @@ export interface IPlayer {
   gamesWon: number;
   wonRate: number;
   playHistory: object[];
+  save(): string;
 }

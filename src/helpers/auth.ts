@@ -39,7 +39,7 @@ class Auth {
   }
 
   async login() {
-    const playerDB = await Player.findById({ email: this.email });
+    const playerDB = await Player.findOne({ email: this.email });
     if (!playerDB) return "Wrong email!!";
     const validPassword = await Player.comparePassword(
       this.password,

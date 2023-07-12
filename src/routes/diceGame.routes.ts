@@ -6,17 +6,18 @@ import {
   getWorstPlayer,
   deleteGames,
 } from "../controllers/diceGame.controllers";
+import { validateToken } from "../middlewares/validateJWT";
 
 const router: Router = Router();
 
-router.post("/player/:id", playerRollDice);
+router.post("/player/:id", validateToken, playerRollDice);
 
-router.get("/ranking", generalRanking);
+router.get("/ranking", validateToken, generalRanking);
 
-router.get("/better-player", getBetterPlayer);
+router.get("/better-player", validateToken, getBetterPlayer);
 
-router.get("/worst-player", getWorstPlayer);
+router.get("/worst-player", validateToken, getWorstPlayer);
 
-router.delete("/delete/:id", deleteGames);
+router.delete("/delete/:id", validateToken, deleteGames);
 
 export default router;

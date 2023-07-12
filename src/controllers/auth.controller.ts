@@ -12,7 +12,7 @@ export const register = async (req: Request, res: Response) => {
       lastName,
       email,
       date,
-      jwt: register
+      jwt: register,
     });
   } catch (error) {
     console.error(error);
@@ -22,7 +22,30 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-export const login = (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response) => {
   try {
-  } catch (error) {}
+    const { email, password } = req.body;
+    const player = new Auth(email, password);
+    const login = await player.login();
+
+    if (login === "Wrong email!!") {
+      return res.status(400).json({
+        message: "The email address entered is not registered!",
+      });
+    }
+    if (login === "Wrong password!!") {
+      return res.status(400).json({
+        message: "The password entered is not valid!",
+      });
+    }
+
+    return res.status(201).json({
+      message: "Successfully authentication",
+      jwt: login,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Error 500 - Internal Server Error",
+    });
+  }
 };
